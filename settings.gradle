@@ -1,0 +1,3 @@
+rootProject.name = "DayNight"
+include ':app'
+include ':forcedark'

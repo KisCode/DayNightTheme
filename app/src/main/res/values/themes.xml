@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.DayNight" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <item name="android:colorBackground">@color/bgColor</item>
+
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <!--    主要文字颜色    -->
+        <item name="android:textColorPrimary">@color/textColor</item>
+        <!--    可选文字颜    -->
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+    </style>
+</resources>

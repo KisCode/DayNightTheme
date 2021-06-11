@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
+    <string name="app_name">DayNight</string>
+    <string name="title_activity_home">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_navigator">MainActivity</string>
+</resources>
