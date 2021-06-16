@@ -1,3 +1,4 @@
 rootProject.name = "DayNight"
 include ':app'
 include ':forcedark'
+include ':dynamicskin'
