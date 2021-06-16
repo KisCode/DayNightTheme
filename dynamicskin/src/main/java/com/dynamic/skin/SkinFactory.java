@@ -12,14 +12,17 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class SkinFactory implements LayoutInflater.Factory2 {
-    private static final List<SkinView> mSkinViewList = new ArrayList<>();
+public class SkinFactory implements LayoutInflater.Factory2, Observer {
     private static final String TAG = "SkinFactory";
     private AppCompatDelegate mAppCompatDelegate;
+    private SkinAttribute mSkinAttribute;
 
     public SkinFactory(AppCompatDelegate mAppCompatDelegate) {
         this.mAppCompatDelegate = mAppCompatDelegate;
+        mSkinAttribute = new SkinAttribute();
     }
 
     @Nullable
@@ -36,12 +39,10 @@ public class SkinFactory implements LayoutInflater.Factory2 {
             }
         }
 
-        cachSkinView(view);
+        mSkinAttribute.look(view, attrs);
         return view;
     }
 
-    private void cachSkinView(View view) {
-    }
 
     @Nullable
     @Override
@@ -49,4 +50,11 @@ public class SkinFactory implements LayoutInflater.Factory2 {
         return null;
     }
 
+
+    @Override
+    public void update(Observable o, Object arg) {
+        Log.i(TAG,"update");
+        //接收消息
+        mSkinAttribute.applySkin();//换肤
+    }
 }

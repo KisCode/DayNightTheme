@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dynamic.skin.SkinManager;
 import com.kiscode.daynight.util.ThemeHelper;
 
 import java.text.SimpleDateFormat;
@@ -22,10 +23,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i(TAG,"onCreate");
+        Log.i(TAG, "onCreate");
         initViews();
         initNightMode();
     }
@@ -33,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i(TAG,"onDestroy");
+        Log.i(TAG, "onDestroy");
     }
 
     private void initViews() {
         TextView tvTime = findViewById(R.id.tv_current_time);
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
         tvTime.setText(sdf.format(Calendar.getInstance().getTimeInMillis()));
 
         Switch darkModeSwitch = findViewById(R.id.switch_dark_mode);
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void open(View view) {
-        NavigatorActivity.start(this);
+//        NavigatorActivity.start(this);
+        SkinManager.getInstance().change();
     }
 }

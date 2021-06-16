@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.dynamic.skin.SkinFactory;
+import com.dynamic.skin.SkinManager;
 
 import java.lang.reflect.Field;
 
@@ -20,7 +21,9 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        SkinManager.init(this);
         initActivityLifeCallbacks();
+
     }
 
     private void initActivityLifeCallbacks() {
@@ -28,7 +31,7 @@ public class App extends Application {
 
             @Override
             public void onActivityPreCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-                if(activity instanceof AppCompatActivity) {
+                if (activity instanceof AppCompatActivity) {
                     LayoutInflater layoutInflater = LayoutInflater.from(activity);
                     AppCompatDelegate appCompatDelegate = ((AppCompatActivity) activity).getDelegate();
                     SkinFactory skinFactory = new SkinFactory(appCompatDelegate);
