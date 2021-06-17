@@ -4,13 +4,11 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dynamic.skin.SkinManager;
 import com.kiscode.daynight.util.ThemeHelper;
 
 import java.text.SimpleDateFormat;
@@ -71,7 +69,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void open(View view) {
-//        NavigatorActivity.start(this);
-        SkinManager.getInstance().change();
+        NavigatorActivity.start(this);
+    }
+
+    //动态换肤
+    public void openSkin(View view) {
+        ChangeSkinActivity.start(this);
     }
 }

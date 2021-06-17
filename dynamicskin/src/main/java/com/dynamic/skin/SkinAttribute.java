@@ -1,8 +1,8 @@
 package com.dynamic.skin;
 
 
-import android.content.Intent;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -17,22 +17,44 @@ import java.util.Observable;
 
 public class SkinAttribute extends Observable {
     private static final List<String> mAttributes = new ArrayList<>();
-    private List<SkinView> mSkinViews = new ArrayList<>();
+    private static final String TAG = "SkinAttribute";
 
     static {
         mAttributes.add("textColor");
         mAttributes.add("background");
+        mAttributes.add("tint");
     }
 
+    private List<SkinView> mSkinViews = new ArrayList<>();
+
     public void look(View view, AttributeSet attrs) {
+        if (view == null) {
+            return;
+        }
+        Log.e(TAG, view.getClass().getName() + ":" + attrs.getAttributeCount());
         int count = attrs.getAttributeCount();
         List<SkinPair> skinPairList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             String attributeName = attrs.getAttributeName(i);
             if (mAttributes.contains(attributeName)) {
                 String attributeValue = attrs.getAttributeValue(i);
+                Log.i(TAG, attributeName + ":" + attributeValue);
 
-                int resId = Integer.parseInt(attributeValue);
+                //写死颜色值不做处理
+                if (attributeValue.startsWith("#")) {
+                    continue;
+                }
+
+                int resId;
+                // 以 ？开头的表示使用 属性
+                if (attributeValue.startsWith("?")) {
+                    int attrId = Integer.parseInt(attributeValue.substring(1));
+//                    resId = SkinThemeUtils.getResId(view.getContext(), new int[]{attrId})[0];
+                    resId = 0;
+                } else {
+                    // 正常以 @ 开头
+                    resId = Integer.parseInt(attributeValue.substring(1));
+                }
                 SkinPair skinPair = new SkinPair(attributeName, resId);
                 skinPairList.add(skinPair);
             }
@@ -42,7 +64,6 @@ public class SkinAttribute extends Observable {
             SkinView skinView = new SkinView(view, skinPairList);
             mSkinViews.add(skinView);
         }
-
     }
 
     /***
@@ -53,6 +74,4 @@ public class SkinAttribute extends Observable {
             skinView.applySkin();
         }
     }
-
-
 }

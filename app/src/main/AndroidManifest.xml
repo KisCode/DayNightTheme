@@ -10,12 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DayNight">
+        <activity android:name=".ChangeSkinActivity"></activity>
         <activity
             android:name=".NavigatorActivity"
             android:label="@string/title_activity_navigator" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -2,7 +2,16 @@ package com.dynamic.skin;
 
 
 import android.app.Application;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.text.TextUtils;
 
+import com.dynamic.skin.support.SkinResourcesMananger;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Observable;
 
 /****
@@ -15,10 +24,15 @@ public class SkinManager extends Observable {
     private static final String TAG = "SkinManager";
 
     private static SkinManager mInstance;
-    private Application mContext;
+    private Application application;
+    private SkinActivityLifecycleCallbacks activityLifecycleCallbacks;
 
     private SkinManager(Application mContext) {
-        this.mContext = mContext;
+        this.application = mContext;
+        SkinActivityLifecycleCallbacks activityLifecycleCallbacks = new SkinActivityLifecycleCallbacks(this);
+        application.registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
+
+        SkinResourcesMananger.init(application);
     }
 
     public static void init(Application application) {
@@ -33,14 +47,36 @@ public class SkinManager extends Observable {
         return mInstance;
     }
 
-    public void load() {
+    public void load(String skinPath) {
+        if (TextUtils.isEmpty(skinPath)) {
+            SkinResourcesMananger.getInstance().reset();
+        } else {
+            //当前App Resources
+            Resources appResources = application.getResources();
 
-    }
+            try {
+                //反射创建 皮肤包Resources
+                AssetManager assetManager = AssetManager.class.newInstance();
+                Method addAssetPathMethod = AssetManager.class.getMethod("addAssetPath", String.class);
+                addAssetPathMethod.invoke(assetManager, skinPath);
 
-    public void change() {
+                //创建皮肤 Resources
+                Resources skinResources = new Resources(assetManager, appResources.getDisplayMetrics(), appResources.getConfiguration());
+
+                //获取皮肤包名
+                PackageManager packageManager = application.getPackageManager();
+                PackageInfo info = packageManager.getPackageArchiveInfo(skinPath, PackageManager.GET_ACTIVITIES);
+                String packageName = info.packageName;
+
+                SkinResourcesMananger.getInstance().applySkin(skinResources, packageName);
+            } catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        //通知刷新
         setChanged();
         notifyObservers(null);
-
     }
 
 }

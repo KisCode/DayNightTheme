@@ -1,9 +1,19 @@
 package com.dynamic.skin;
 
+import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import java.util.HashMap;
+import androidx.core.view.ViewCompat;
+
+import com.dynamic.skin.support.SkinResourcesMananger;
+
 import java.util.List;
 
 public class SkinView {
@@ -20,6 +30,30 @@ public class SkinView {
         Log.i(TAG, "applySkin:" + view.getClass().getName());
         for (SkinPair skinPair : pairList) {
             Log.w(TAG, skinPair.getAttributeName() + ":" + skinPair.getResId());
+            switch (skinPair.getAttributeName()) {
+                case "background":
+                    Object skinBackground = SkinResourcesMananger.getInstance().getBackground(skinPair.getResId());
+                    if (skinBackground == null) {
+                        return;
+                    }
+                    if (skinBackground instanceof Integer) {
+                        view.setBackgroundColor((int) skinBackground);
+                    } else {
+                        ViewCompat.setBackground(view, (Drawable) skinBackground);
+                    }
+                    break;
+                case "textColor":
+                    ColorStateList skinColor = SkinResourcesMananger.getInstance()
+                            .getColorStateList(skinPair.getResId());
+                    ((TextView) view).setTextColor(skinColor);
+                    break;
+                case "tint":
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ColorStateList tintColorStateList = SkinResourcesMananger.getInstance().getColorStateList(skinPair.getResId());
+                        ((ImageView) view).setImageTintList(tintColorStateList);
+                    }
+                    break;
+            }
         }
     }
 }
