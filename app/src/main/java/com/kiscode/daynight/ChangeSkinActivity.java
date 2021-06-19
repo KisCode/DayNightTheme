@@ -27,4 +27,8 @@ public class ChangeSkinActivity extends AppCompatActivity {
         String skinPath = getCacheDir().getAbsolutePath() + File.separator + "skin_red.apk";
         SkinManager.getInstance().load(skinPath);
     }
+
+    public void restSkin(View view) {
+        SkinManager.getInstance().reset();
+    }
 }

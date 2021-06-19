@@ -10,6 +10,7 @@ import android.text.TextUtils;
 
 import com.dynamic.skin.support.SkinResourcesMananger;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Observable;
@@ -27,12 +28,13 @@ public class SkinManager extends Observable {
     private Application application;
     private SkinActivityLifecycleCallbacks activityLifecycleCallbacks;
 
-    private SkinManager(Application mContext) {
-        this.application = mContext;
-        SkinActivityLifecycleCallbacks activityLifecycleCallbacks = new SkinActivityLifecycleCallbacks(this);
-        application.registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
+    private SkinManager(Application application) {
+        this.application = application;
 
         SkinResourcesMananger.init(application);
+
+        activityLifecycleCallbacks = new SkinActivityLifecycleCallbacks(this);
+        application.registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
     }
 
     public static void init(Application application) {
@@ -47,8 +49,17 @@ public class SkinManager extends Observable {
         return mInstance;
     }
 
+
+    public void reset() {
+        SkinResourcesMananger.getInstance().reset();
+
+        //通知刷新
+        setChanged();
+        notifyObservers(null);
+    }
+
     public void load(String skinPath) {
-        if (TextUtils.isEmpty(skinPath)) {
+        if (TextUtils.isEmpty(skinPath) || !new File(skinPath).exists()) {
             SkinResourcesMananger.getInstance().reset();
         } else {
             //当前App Resources

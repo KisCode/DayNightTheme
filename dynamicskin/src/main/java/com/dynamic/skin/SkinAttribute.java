@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.dynamic.skin.support.SkinThemeUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -16,13 +18,15 @@ import java.util.Observable;
  */
 
 public class SkinAttribute extends Observable {
-    private static final List<String> mAttributes = new ArrayList<>();
     private static final String TAG = "SkinAttribute";
+    private static final List<String> mAttributes = new ArrayList<>();
 
     static {
         mAttributes.add("textColor");
+        mAttributes.add("foreground");
         mAttributes.add("background");
         mAttributes.add("tint");
+        mAttributes.add("src");
     }
 
     private List<SkinView> mSkinViews = new ArrayList<>();
@@ -49,8 +53,7 @@ public class SkinAttribute extends Observable {
                 // 以 ？开头的表示使用 属性
                 if (attributeValue.startsWith("?")) {
                     int attrId = Integer.parseInt(attributeValue.substring(1));
-//                    resId = SkinThemeUtils.getResId(view.getContext(), new int[]{attrId})[0];
-                    resId = 0;
+                    resId = SkinThemeUtils.getResId(view.getContext(), new int[]{attrId})[0];
                 } else {
                     // 正常以 @ 开头
                     resId = Integer.parseInt(attributeValue.substring(1));
@@ -62,6 +65,7 @@ public class SkinAttribute extends Observable {
 
         if (!skinPairList.isEmpty()) {
             SkinView skinView = new SkinView(view, skinPairList);
+            skinView.applySkin();
             mSkinViews.add(skinView);
         }
     }
