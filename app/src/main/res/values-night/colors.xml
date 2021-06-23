@@ -2,11 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#FF6200EE</color>
-    <color name="colorPrimaryVariant">#FF6200EE</color>
-    <color name="colorPrimaryDar">#FF3700B3</color>
-    <color name="colorSecondary">#FF03DAC5</color>
-    <color name="colorSecondaryVariant">#FF018786</color>
+    <color name="colorPrimary">#FF455A64</color>
+    <color name="colorPrimaryVariant">#FF455A64</color>
+    <color name="colorPrimaryDark">#FF212121</color>
+    <color name="colorSecondary">#FFAA00</color>
+    <color name="colorSecondaryVariant">#FF0000</color>
     <color name="colorError">#FF0000</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="textColorSecondary">#FFFFFF</color>

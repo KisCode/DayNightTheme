@@ -38,17 +38,6 @@ public class MainActivity extends AppCompatActivity {
         TextView tvTime = findViewById(R.id.tv_current_time);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
         tvTime.setText(sdf.format(Calendar.getInstance().getTimeInMillis()));
-
-        Switch darkModeSwitch = findViewById(R.id.switch_dark_mode);
-        darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                //强制暗黑模式
-                ThemeHelper.applyTheme(ThemeHelper.DARK_MODE);
-            } else {
-                //跟随系统
-                ThemeHelper.applyTheme(ThemeHelper.DEFAULT_MODE);
-            }
-        });
     }
 
     private void initNightMode() {

@@ -12,13 +12,13 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/colorPrimary</item>
         <item name="android:colorBackground">@color/bgColor</item>
-
+<!--
         <item name="android:textColor">@color/textColor</item>
-        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:textColorHint">@color/textColorHint</item>-->
         <!--    主要文字颜色    -->
-        <item name="android:textColorPrimary">@color/textColor</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <!--    可选文字颜    -->
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
     </style>
