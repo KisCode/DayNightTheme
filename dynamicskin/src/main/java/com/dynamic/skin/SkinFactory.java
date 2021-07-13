@@ -1,6 +1,5 @@
 package com.dynamic.skin;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -12,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;

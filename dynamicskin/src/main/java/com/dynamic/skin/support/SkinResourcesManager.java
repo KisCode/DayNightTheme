@@ -5,30 +5,30 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
-public class SkinResourcesMananger {
+public class SkinResourcesManager {
 
-    private static SkinResourcesMananger mInstance;
+    private static SkinResourcesManager mInstance;
     private Application mApplication;
 
     private Resources mDefaultResources, mSkinResources;
     private String mPackageName;
 
-    public SkinResourcesMananger(Application application) {
+    public SkinResourcesManager(Application application) {
         this.mApplication = application;
         mDefaultResources = mApplication.getResources();
     }
 
     public static void init(Application application) {
         if (mInstance == null) {
-            synchronized (SkinResourcesMananger.class) {
+            synchronized (SkinResourcesManager.class) {
                 if (mInstance == null) {
-                    mInstance = new SkinResourcesMananger(application);
+                    mInstance = new SkinResourcesManager(application);
                 }
             }
         }
     }
 
-    public static SkinResourcesMananger getInstance() {
+    public static SkinResourcesManager getInstance() {
         return mInstance;
     }
 
@@ -47,7 +47,7 @@ public class SkinResourcesMananger {
             return mDefaultResources.getColor(resId);
         }
 
-        int skinId = getIentifier(resId);
+        int skinId = getIdentifier(resId);
         if (skinId == 0) {
             return mDefaultResources.getColor(resId);
         }
@@ -59,7 +59,7 @@ public class SkinResourcesMananger {
             return mDefaultResources.getColorStateList(resId);
         }
 
-        int skinId = getIentifier(resId);
+        int skinId = getIdentifier(resId);
         if (skinId == 0) {
             return mDefaultResources.getColorStateList(resId);
         }
@@ -71,7 +71,7 @@ public class SkinResourcesMananger {
             return mDefaultResources.getDrawable(resId);
         }
 
-        int skinId = getIentifier(resId);
+        int skinId = getIdentifier(resId);
         if (skinId == 0) {
             return mDefaultResources.getDrawable(resId);
         }
@@ -87,7 +87,7 @@ public class SkinResourcesMananger {
         }
     }
 
-    public int getIentifier(int resId) {
+    public int getIdentifier(int resId) {
         if (mSkinResources == null) {
             return resId;
         }

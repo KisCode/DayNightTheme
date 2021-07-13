@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import androidx.core.view.ViewCompat;
 
-import com.dynamic.skin.support.SkinResourcesMananger;
+import com.dynamic.skin.support.SkinResourcesManager;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class SkinView {
             Log.w(TAG, skinPair.getAttributeName() + ":" + skinPair.getResId());
             switch (skinPair.getAttributeName()) {
                 case "background":
-                    Object skinBackground = SkinResourcesMananger.getInstance().getBackground(skinPair.getResId());
+                    Object skinBackground = SkinResourcesManager.getInstance().getBackground(skinPair.getResId());
                     if (skinBackground == null) {
                         return;
                     }
@@ -41,13 +41,13 @@ public class SkinView {
                     }
                     break;
                 case "textColor":
-                    ColorStateList skinColor = SkinResourcesMananger.getInstance()
+                    ColorStateList skinColor = SkinResourcesManager.getInstance()
                             .getColorStateList(skinPair.getResId());
                     ((TextView) view).setTextColor(skinColor);
                     break;
                 case "tint":
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        ColorStateList tintColorStateList = SkinResourcesMananger.getInstance().getColorStateList(skinPair.getResId());
+                        ColorStateList tintColorStateList = SkinResourcesManager.getInstance().getColorStateList(skinPair.getResId());
                         ((ImageView) view).setImageTintList(tintColorStateList);
                     }
                     break;
