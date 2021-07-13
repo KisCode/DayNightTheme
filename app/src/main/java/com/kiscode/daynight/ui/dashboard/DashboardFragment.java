@@ -22,7 +22,6 @@ private FragmentDashboardBinding binding;
 
     binding = FragmentDashboardBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
-
         return root;
     }
 

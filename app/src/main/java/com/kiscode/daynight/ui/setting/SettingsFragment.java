@@ -1,5 +1,6 @@
 package com.kiscode.daynight.ui.setting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.kiscode.daynight.ChangeSkinActivity;
 import com.kiscode.daynight.databinding.FragmentNotificationsBinding;
 import com.kiscode.daynight.util.ThemeHelper;
 
@@ -28,10 +30,15 @@ public class SettingsFragment extends Fragment {
                 ThemeHelper.applyTheme(ThemeHelper.DEFAULT_MODE);
             }
         });
-        View root = binding.getRoot();
 
+        binding.btnChangeSkin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ChangeSkinActivity.class));
+            }
+        });
 
-        return root;
+        return binding.getRoot();
     }
 
     @Override
