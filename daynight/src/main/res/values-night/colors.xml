@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  主题颜色，button/toolbar 默认背景颜色  -->
+    <color name="colorPrimary">#FF263238</color>
+    <color name="colorPrimaryDark">#000a12</color>
+    <!--  主题控件上显示颜色，button/toolbar上文字颜色  -->
+    <color name="colorOnPrimary">#FFFFFFFF</color>
+
+    <!--  交互性颜色，如RadioButton/CheckBox 勾选颜色等  -->
+    <color name="colorSecondary">#FF4f5b62</color>
+    <color name="colorSecondaryVariant">#000a12</color>
+    <color name="colorOnSecondary">#FFFFFFFF</color>
+
+    <color name="colorBackground">#A2A2A2</color>
+    <color name="colorOnBackground">#000000</color>
+
+    <!--  用于表单或表面 (如卡片颜色和应用的底部弹出菜单颜色)  -->
+    <color name="colorSurface">#FFFFFFFF</color>
+    <color name="colorOnSurface">#FF000000</color>
+
+    <!--  错误颜色  -->
+    <color name="colorError">#FFFF0000</color>
+    <color name="colorOnError">#FFFFFFFF</color>
+
+    <color name="textColor">#FFFFFFFF</color>
+</resources>

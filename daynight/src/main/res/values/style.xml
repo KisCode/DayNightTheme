@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="myButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_default</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+
+    <style name="myRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+</resources>

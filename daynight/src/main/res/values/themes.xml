@@ -1,0 +1,46 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.DayNight" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!--    <style name="Theme.DayNight" parent="Theme.AppCompat.DayNight.NoActionBar">-->
+        <!--    https://blog.csdn.net/googledevs/article/details/109567406-->
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+        <!-- Secondary brand color. 交互性颜色，如RadioButton/CheckBox 勾选颜色等 -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnPrimary</item>
+
+        <!--    背景颜色    -->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+
+        <!--    用于表单或表面 (如卡片颜色和应用的底部弹出菜单颜色)     -->
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+
+        <!--    错误颜色    -->
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/colorOnError</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColorPrimary">@color/textColor</item>
+        <!--
+                <item name="colorControlNormal">@color/colorError</item>
+                <item name="colorControlActivated">#00FF00</item>
+                -->
+
+        <!--    定义通用按钮样式    -->
+        <item name="buttonStyle">@style/myButtonStyle</item>
+        <item name="materialButtonStyle">@style/myButtonStyle</item>
+        <!--    定义radiobutton样式    -->
+        <item name="radioButtonStyle">@style/myRadioButtonStyle</item>
+    </style>
+</resources>

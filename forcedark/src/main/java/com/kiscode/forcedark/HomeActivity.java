@@ -3,9 +3,11 @@ package com.kiscode.forcedark;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +34,6 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,7 +46,6 @@ public class HomeActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home);
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
     }
 
     @Override
@@ -65,13 +65,17 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_dark_setting:
-                boolean darkMode = SpManager.isDarkMode(this);
-                if (darkMode) {
-                    ThemeUtil.applyLightTheme();
-                } else {
-                    ThemeUtil.applyDarkTheme();
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                    Toast.makeText(this, "Android below 10 is not supported", Toast.LENGTH_SHORT).show();
+                }else{
+                    boolean darkMode = SpManager.isDarkMode(this);
+                    if (darkMode) {
+                        ThemeUtil.applyLightTheme();
+                    } else {
+                        ThemeUtil.applyDarkTheme();
+                    }
+                    SpManager.put(this, !darkMode);
                 }
-                SpManager.put(this, !darkMode);
                 break;
         }
         return super.onOptionsItemSelected(item);
