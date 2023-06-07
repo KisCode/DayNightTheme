@@ -36,4 +36,11 @@
         <item name="titleTextAppearance">@style/ToolbarTitleText</item>
         <item name="subtitleTextStyle">@style/ToolbarSubTitleText</item>
     </style>
+
+    <style name="CommonCardviewStyle"  parent="Widget.MaterialComponents.CardView">
+        <item name="backgroundColor">?attr/colorSurface</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0.75dp</item>
+    </style>
 </resources>

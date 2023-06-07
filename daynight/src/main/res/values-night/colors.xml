@@ -2,25 +2,25 @@
 <resources>
     <!--  ###############################夜间模式###############################  -->
     <!--  主题颜色，button/toolbar 默认背景颜色  -->
-    <color name="colorPrimary">#FF263238</color>
-    <color name="colorPrimaryDark">#FF1A1A1A</color>
+    <color name="colorPrimary">#FF708D9B</color>
+    <color name="colorPrimaryDark">#FF607D8B</color>
     <!--  主题控件上显示颜色，button/toolbar上文字颜色  -->
     <color name="colorOnPrimary">#FFFFFFFF</color>
 
     <!--  交互性颜色，如RadioButton/CheckBox 勾选颜色等  -->
-    <color name="colorSecondary">#FF4f5b62</color>
-    <color name="colorSecondaryVariant">#000a12</color>
+    <color name="colorSecondary">#3F5FB5</color>
+    <color name="colorSecondaryVariant">#303F9F</color>
     <color name="colorOnSecondary">#FFFFFFFF</color>
 
-    <color name="colorBackground">#A2A2A2</color>
-    <color name="colorOnBackground">#000000</color>
+    <color name="colorBackground">#FF405D6B</color>
+    <color name="colorOnBackground">#FFFFFFFF</color>
 
     <!--  用于表单或表面 (如卡片颜色和应用的底部弹出菜单颜色)  -->
-    <color name="colorSurface">#FFFFFFFF</color>
-    <color name="colorOnSurface">#FF000000</color>
+    <color name="colorSurface">#FF152A34</color>
+    <color name="colorOnSurface">#FFFFFFFF</color>
 
     <!--  statusBar背景颜色  -->
-    <color name="statusBarBackground">#FF1A1A1A</color>
+    <color name="statusBarBackground">#FF455A64</color>
 
     <!--  错误颜色  -->
     <color name="colorError">#FFFF0000</color>

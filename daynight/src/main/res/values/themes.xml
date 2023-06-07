@@ -52,5 +52,9 @@
         <item name="radioButtonStyle">@style/CommonRadioButtonStyle</item>
         <!--    定义Toolbar样式   -->
         <item name="toolbarStyle">@style/CommonToolbarStyle</item>
+
+        <!--    自定义Cardview样式    -->
+        <item name="cardViewStyle">@style/CommonCardviewStyle</item>
+        <item name="materialCardViewStyle">@style/CommonCardviewStyle</item>
     </style>
 </resources>
