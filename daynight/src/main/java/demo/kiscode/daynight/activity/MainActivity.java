@@ -1,20 +1,22 @@
-package demo.kiscode.daynight;
+package demo.kiscode.daynight.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import demo.kiscode.daynight.R;
+import demo.kiscode.daynight.SpConstants;
+import demo.kiscode.daynight.util.SpManager;
+
 public class MainActivity extends AppCompatActivity {
-    private Button btnChange;
-    private Toolbar toolbar;
+    private Button btnChange, btnDetail;
     private TextInputEditText textInputEt;
 
     @Override
@@ -22,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = findViewById(R.id.toolbar);
         btnChange = findViewById(R.id.btn_change);
+        btnDetail = findViewById(R.id.btn_detail);
         textInputEt = findViewById(R.id.textInputEt);
 
         textInputEt.addTextChangedListener(new TextWatcher() {
@@ -48,12 +50,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnChange.setOnClickListener(v -> {
+/*
             int localNightMode = getDelegate().getLocalNightMode();
             if (localNightMode != AppCompatDelegate.MODE_NIGHT_YES) {
                 getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             } else {
                 getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
+            */
+
+            boolean isDayNight = SpManager.getBool(SpConstants.KEY_DAY_NIGHT, false);
+            SpManager.putImmediately(SpConstants.KEY_DAY_NIGHT, !isDayNight);
+            AppCompatDelegate.setDefaultNightMode(!isDayNight ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
         });
+
+        btnDetail.setOnClickListener(view -> startActivity(new Intent(this, DetailActivity.class)));
     }
 }

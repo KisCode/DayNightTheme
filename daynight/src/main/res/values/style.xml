@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="myButtonStyle" parent="@android:style/Widget.Button">
+    <!--  定义通用 RadioButton 样式  -->
+    <style name="CommonButtonStyle" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/button_default</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:paddingStart">12dp</item>
@@ -9,7 +10,30 @@
         <item name="android:paddingBottom">6dp</item>
     </style>
 
-    <style name="myRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
+    <!--  定义通用 RadioButton 样式  -->
+    <style name="CommonRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:textColor">@color/textColor</item>
+    </style>
+
+
+    <style name="ToolbarTitleText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="ToolbarSubTitleText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
+    </style>
+
+    <style name="CommonToolbarStyle" parent="@android:style/Widget.Material.Toolbar">
+        <item name="titleTextColor">@color/textColor</item>
+        <item name="subtitleTextColor">@color/textColorThird</item>
+        <item name="android:paddingStart">12dp</item>
+        <!--    定义标题文字样式    -->
+        <item name="titleTextAppearance">@style/ToolbarTitleText</item>
+        <item name="subtitleTextStyle">@style/ToolbarSubTitleText</item>
     </style>
 </resources>
